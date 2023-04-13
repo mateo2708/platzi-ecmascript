@@ -4,12 +4,13 @@ class User {
     this.age = age;
   }
 
-  speak() {
+  // Metodos con # ahora son metodos privados
+  #speak() {
     return 'Hello';
   }
 
   greeting() {
-    return `${this.speak()} ${this.name}`;
+    return `${this.#speak()} ${this.name}`;
   }
 
   get uAge() {
@@ -19,10 +20,6 @@ class User {
   set uAge(n) {
     this.age = n;
   }
-
-  get value() {
-    return '5555';
-  }
 }
 
 const newUser = new User('Mateo', 26);
@@ -30,4 +27,6 @@ const newUser = new User('Mateo', 26);
 console.log(newUser.uAge);
 newUser.uAge = 10;
 console.log(newUser.uAge);
-console.log(newUser.value);
+
+// console.log(newUser.#speak()); // Throws error becaouse the function is private
+console.log(newUser.greeting());
